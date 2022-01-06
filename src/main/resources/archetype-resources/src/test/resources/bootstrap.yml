@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: ${artifactId}
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+  cloud:
+    config:
+      enabled: false
+  profiles:
+    active: test
+
+server:
+  servlet:
+    context-path: /${spring.application.name}
+
+management:
+  server:
+    port: 9090
+  context-path: /actuator
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}

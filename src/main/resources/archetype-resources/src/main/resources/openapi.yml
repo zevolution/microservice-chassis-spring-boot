@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: API Sample
+  description: Description API Sample
+  termsOfService: 'https://sample.com/terms/'
+  contact:
+    name: API Support
+    url: 'https://www.sample.com/support'
+    email: support@sample.com
+  license:
+    name: Apache 2.0
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+  version: '1.0'
+servers:
+  - url: 'https://apps-dev.zevolution.com.br/sample'
+    description: Development server
+  - url: 'https://apps-hml.zevolution.com.br/sample'
+    description: Staging server
+  - url: 'https://apps-prd.zevolution.com.br/sample'
+    description: Production server
+components:
+  schemas:
+    GeneralError:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+    SampleResponse:
+      type: object
+      x-examples:
+        example-1:
+          id: -2147483648
+          description: string
+      properties:
+        id:
+          type: integer
+          format: int32
+        description:
+          type: string
+  responses:
+    GeneralError:
+      description: General Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GeneralError'
+          examples:
+            example-1:
+              value:
+                code: 0
+                message: string
+paths:
+  '/sample/{id}':
+    get:
+      summary: Summary...
+      description: Description get
+      operationId: getSample
+      responses:
+        '200':
+          description: Description 200
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SampleResponse'
+              examples:
+                First Example:
+                  value:
+                    id: 1
+                    description: First Example
+                Second Example:
+                  value:
+                    id: 2
+                    description: Second Example
+        '204':
+          description: Description 204
+        default:
+          description: Description default
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeneralError'
+    parameters:
+      - name: id
+        in: path
+        description: Description Parameter
+        required: true
+        schema:
+          type: integer
+          format: int32
+        style: simple
