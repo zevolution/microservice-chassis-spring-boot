@@ -70,7 +70,11 @@ Foi utilizado na criação deste chassis bibliotecas como:
 * [JUnit 5](https://junit.org/junit5/docs/current/user-guide/)
 * [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
   * O chassis está gerando o código a partir da especificação em `src/main/resources/openapi.yml`
-* [Micrometer Registry Prometheus]()
+* [Micrometer Registry Prometheus](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#actuator.metrics.getting-started)
+
+# Build
+Antes de subir a aplicação, execute o comando `mvn clean install` ou mesmo o comando `mvn clean generate-sources` para gerar os stubs
+utilizando OpenAPI-Generator-Tools, a partir do arquivo `openapi.yml`.
 
 # URLs
  - Documentação swagger do próprio chassis: `http://localhost:8080/project-artifact/swagger-ui/`
