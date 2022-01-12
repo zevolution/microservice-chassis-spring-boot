@@ -8,8 +8,15 @@
                 ${artifactId.replaceAll("[^a-z]", "")}
             </defaultValue>
         </requiredProperty>
+        <requiredProperty key="artifactIdToPackageWithoutSpecialCaracters" >
+            <defaultValue>
+                ${artifactIdToPackage.replaceAll("(-|_)", "").toLowerCase()}
+            </defaultValue>
+        </requiredProperty>
         <requiredProperty key="artifactIdToPackageImport" >
-            <defaultValue>${artifactIdToPackage.replaceAll("/", ".")}</defaultValue>
+            <defaultValue>
+                ${artifactIdToPackage.replaceAll("(-|_)", "").replaceAll("/", ".").toLowerCase()}
+            </defaultValue>
         </requiredProperty>
     </requiredProperties>
 
